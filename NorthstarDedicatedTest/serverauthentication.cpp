@@ -521,6 +521,11 @@ void CBaseClient__SendServerInfoHook(void* self)
 
 bool ProcessConnectionlessPacketHook(void* a1, netpacket_t* packet)
 {
+	if (!Cvar_net_datablock_enabled)
+	{
+		return ProcessConnectionlessPacket(a1, packet);
+	}
+
 	if (packet->adr.type == NA_IP &&
 		(!(packet->data[4] == 'N' && Cvar_net_datablock_enabled->GetBool()) || !Cvar_net_datablock_enabled->GetBool()))
 	{
