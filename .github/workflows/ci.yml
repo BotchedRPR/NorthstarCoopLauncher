@@ -32,8 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: 1.0.$GITHUB_RUN_NUMBER
-          release_name: Release $GITHUB_RUN_NUMBER
+          tag_name: 1.0.${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
           body: |
             Automatically generated release by GitHubActions.
           draft: false
