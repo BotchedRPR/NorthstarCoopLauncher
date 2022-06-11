@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [workflow_dispatch]
 
 env:
   BUILD_PROFILE: Release
@@ -31,7 +31,7 @@ jobs:
         uses: vimtor/action-zip@v1
         with: 
     # Files or directories to zip
-          files: x64/${{ env.BUILD_PROFILE }}/*.dll x64/${{ env.BUILD_PROFILE }}/*.exe x64/${{ env.BUILD_PROFILE }}/*.pdb x64/${{ env.BUILD_PROFILE }}/*.txt
+          files: x64/${{ env.BUILD_PROFILE }}/
     # Name of output zip file
           dest: NSCoopLauncher-${{ github.run_number }}.zip
     # Whether to add subdirectories to simply zip all files to the root
